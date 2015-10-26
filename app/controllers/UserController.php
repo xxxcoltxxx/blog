@@ -22,4 +22,10 @@ class UserController extends \System\Controller
             return $this->view->htmlPage("user/auth", ['message' => $e->getMessage()]);
         }
     }
+
+    public function actionLogout()
+    {
+        unset($_SESSION['user']['id']);
+        $this->redirect($this->referer, "Вы вышли из системы");
+    }
 }

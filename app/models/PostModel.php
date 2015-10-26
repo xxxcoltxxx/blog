@@ -15,6 +15,9 @@ class PostModel extends \System\Model
 
     private static $table = "posts";
 
+    /** @var null|PostCommentModel[] */
+    private $comments = null;
+
     /**
      * @param null $limit
      * @param null $offset
@@ -68,5 +71,16 @@ class PostModel extends \System\Model
         $db = DB::instance();
         $this->id = $db->store($data, self::$table);
         return $this->id;
+    }
+
+    /**
+     * @return null|PostCommentModel[]
+     */
+    public function getComments()
+    {
+        if (is_null($this->comments)) {
+            $this->comments = PostCommentModel::getComments($this);
+        }
+        return $this->comments;
     }
 }

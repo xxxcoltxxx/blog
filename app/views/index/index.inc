@@ -11,6 +11,8 @@
     <a href="/post/add" class="btn btn-default pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Добавить пост</a>
     Здравствуйте, <?= $user->getDisplayName() ?>
     <a href="/user/logout" class="btn btn-default btn-xs"><i class="glyphicon"></i> Выход</a>
+<?php else: ?>
+    <a href="/user/login">Вход</a>
 <?php endif; ?>
 
 <hr />
