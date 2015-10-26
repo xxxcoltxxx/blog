@@ -36,4 +36,11 @@ class PostController extends \System\Controller
         $post->save();
         $this->redirect("/");
     }
+
+    public function actionShow($id)
+    {
+        $post = PostModel::get($id);
+        $this->view->title = $post->title;
+        return $this->view->htmlPage("post/show", compact("post"));
+    }
 }
