@@ -1,0 +1,6 @@
+[main]
+host = localhost
+username = root
+password =
+database = blog
+encoding = UTF8
