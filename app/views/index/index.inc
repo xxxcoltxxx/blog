@@ -32,7 +32,7 @@ use Data\Handlers\Text;
                 <a href="/post/show/<?= $post->id ?>">Подробнее</a>
             </p>
             <p class="text-right">
-                <?php if (!empty($user)): ?>
+                <?php if (!empty($user) && $user->id == $post->user_id): ?>
                     <a href="/post/edit/<?= $post->id ?>" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-edit"></i> Редактировать</a>
                 <?php endif; ?>
                 <a href="/post/show/<?= $post->id ?>" class="btn btn-default btn-xs">

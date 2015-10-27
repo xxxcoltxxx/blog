@@ -23,6 +23,9 @@ use Data\Handlers\Text;
 
 <?= $this->template("auth", compact("user")) ?>
 
+<?php if (!empty($user) && $user->id == $post->user_id): ?>
+    <a href="/post/edit/<?= $post->id ?>" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-edit"></i> Редактировать пост</a>
+<?php endif; ?>
 <hr />
 <?= nl2br($post->content) ?>
 <hr />
