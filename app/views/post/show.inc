@@ -1,4 +1,5 @@
 <?php
+use Data\Handlers\Text;
 /**
  * @var $this System\View
  * @var $user UserModel
@@ -12,20 +13,15 @@
 </ol>
 
 <div class="text-muted pull-right">
-    <small>Создан: <?= date(DISPLAY_DATE_TIME, strtotime($post->created_at)); ?>
+    <small>Создан: <?= Text::formatDate(strtotime($post->created_at)); ?>
         <?php if (!is_null($post->updated_at)): ?>
-            (изменен <?= date(DISPLAY_DATE_TIME, strtotime($post->updated_at)); ?>)
+            (изменен <?= Text::formatDate(strtotime($post->updated_at)); ?>)
         <?php endif; ?>
     </small>
 </div>
 <h1><?= $this->title ?></h1>
 
-<?php if ($user): ?>
-    Здравствуйте, <?= $user->getDisplayName() ?>
-    <a href="/user/logout" class="btn btn-default btn-xs"><i class="glyphicon"></i> Выход</a>
-<?php else: ?>
-    <a href="/user/login">Вход</a>
-<?php endif; ?>
+<?= $this->template("auth", compact("user")) ?>
 
 <hr />
 <?= nl2br($post->content) ?>
@@ -39,7 +35,7 @@
             <h4 class="list-group-item-heading">
                 <?= $comment->getDisplayName() ?>
                 <small class="text-muted pull-right">
-                    Создано: <?= date(DISPLAY_DATE_TIME, strtotime($comment->created_at)) ?>
+                    Создано: <?= Text::formatDate(strtotime($comment->created_at)) ?>
                 </small>
             </h4>
             <p class="list-group-item-text"><?= $comment->message ?></p>

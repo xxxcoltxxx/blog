@@ -3,7 +3,7 @@
  * @var $this \System\View
  * @var $post null|PostModel
  */
-use Data\Handlers\Html;
+use Data\Handlers\Text;
 
 ?>
 
@@ -13,14 +13,14 @@ use Data\Handlers\Html;
     <div class="form-group">
         <label for="title" class="control-label col-sm-2">Название поста</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" name="data[title]" id="title" value="<?= !empty($post) ? Html::encode($post->title) : "" ?>" />
+            <input type="text" class="form-control" name="data[title]" id="title" value="<?= !empty($post) ? Text::htmlEncode($post->title) : "" ?>" />
         </div>
     </div>
 
     <div class="form-group">
         <label for="content" class="control-label col-sm-2">Текст поста</label>
         <div class="col-sm-10">
-            <textarea class="form-control" name="data[content]" id="content"><?= !empty($post) ? Html::encode($post->content) : "" ?></textarea>
+            <textarea class="form-control" name="data[content]" id="content"><?= !empty($post) ? Text::htmlEncode($post->content) : "" ?></textarea>
         </div>
     </div>
 

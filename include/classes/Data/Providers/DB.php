@@ -180,7 +180,7 @@ class DB extends \mysqli
             if (is_null($value) || $value === "NULL") {
                 $value = "NULL";
             }
-            else if (!is_numeric($value)) {
+            else {
                 $value = "'".$this->escape($value)."'";
             }
             $pairs[] = "`$key` = $value";
@@ -206,8 +206,7 @@ class DB extends \mysqli
         foreach ($data as $key => $value) {
             if (is_null($value) || $value === "NULL") {
                 $value = "NULL";
-            }
-            else if (!is_numeric($value)) {
+            } else {
                 $value = "'".$this->escape($value)."'";
             }
             $keys[] = "`$key`";

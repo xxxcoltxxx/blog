@@ -44,6 +44,15 @@ class PostModel extends \System\Model
         return $posts;
     }
 
+    public static function getPostCount()
+    {
+        $db = DB::instance();
+        $query = $db->getQuery();
+
+        $query->from(self::$table);
+        return $db->queryRow($query->count_sql(), "count");
+    }
+
     public static function get($id)
     {
         Validate::int($id, 1, null, "Пост не найден");
@@ -93,7 +102,9 @@ class PostModel extends \System\Model
      */
     public function getCommentCount()
     {
-        $this->comment_count = PostCommentModel::getCommentCount($this);
+        if (is_null($this->comment_count)) {
+            $this->comment_count = PostCommentModel::getCommentCount($this);
+        }
         return $this->comment_count;
     }
 }
