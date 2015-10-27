@@ -46,8 +46,9 @@ class Text
      */
     public static function cutStr($string, $max_len, $dots = true)
     {
-        if(strlen($string) > $max_len) {
-            $string = preg_replace("/(.{0, {$max_len}}[\w]*).*$/u", '$1', $string);
+        if(mb_strlen($string, "utf8") > $max_len) {
+            preg_match("/^.{0,{$max_len}}[a-zA-Zа-яА-Я0-9]*/u", $string, $matches);
+            $string = trim($matches[0]);
             if ($dots) {
                 $string .= "...";
             }
