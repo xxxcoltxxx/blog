@@ -20,7 +20,7 @@ use Data\Handlers\Text;
     <div class="form-group">
         <label for="content" class="control-label col-sm-2">Текст поста</label>
         <div class="col-sm-10">
-            <textarea class="form-control" name="data[content]" id="content"><?= !empty($post) ? Text::htmlEncode($post->content) : "" ?></textarea>
+            <textarea rows="20" class="form-control" name="data[content]" id="content"><?= !empty($post) ? Text::htmlEncode($post->content) : "" ?></textarea>
         </div>
     </div>
 
