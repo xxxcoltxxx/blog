@@ -78,21 +78,25 @@ database = blog
 encoding = UTF8
 ```
 5. Убедитесь, что у вас включен `mod_rewrite` и в качестве файла `htaccess` установлен `.htaccess`
-6. Перезапустите apache
+6. Создайте папку для логов хоста, если её нет
+```sh
+$ mkdir logs
+```
+7. Перезапустите apache
 ```sh
 $ /etc/init.d/apache2 configtest
 $ /etc/init.d/apache2 reload
 ```
-7. Если вы работаете на локальном компьютере, добавьте запись в `/etc/hosts`
+8. Если вы работаете на локальном компьютере, добавьте запись в `/etc/hosts`
 ```sh
 $ sudo echo "127.0.0.1" >> /etc/hosts
 ```
-8. Добавьте пользователя для блога
+9. Добавьте пользователя для блога
 ```sql
 INSERT INTO `users` (`email`, `password`, `name`)
 VALUES
 ('user@mail.ru', MD5('12345678'), 'Пользователь')
 ```
-8. Откройте ваш хост (http://blog.local) в браузере и пользуйтесь!
+10. Откройте ваш хост (http://blog.local) в браузере и пользуйтесь!
 Логин: *user@mail.ru*
 Пароль: *12345678*
