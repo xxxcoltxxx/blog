@@ -75,6 +75,7 @@ class PostCommentModel extends \System\Model
         $db = DB::instance();
         $this->id = $db->store($data, self::$table);
 
+        $post->comment_count = self::getCommentCount($post);
         $post->save();
         return $this->id;
     }
