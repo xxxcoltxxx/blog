@@ -15,9 +15,9 @@ class PostCommentModel extends \System\Model
     private static $table = "post_comments";
 
     /**
-     * @param PostModel $comment
-     * @param null $limit
-     * @param null $offset
+     * @param PostModel $post
+     * @param null      $limit
+     * @param null      $offset
      * @return PostCommentModel[]
      * @throws Exception
      */
@@ -49,19 +49,33 @@ class PostCommentModel extends \System\Model
         }
     }
 
+    public static function getCommentCount(PostModel $post)
+    {
+        $db = DB::instance();
+        $query = $db->getQuery();
+        $query
+            ->from(self::$table)
+            ->where("post_id = '%d'", $post->id);
+        return $db->queryRow($query->count_sql(), "count");
+    }
+
     public function save()
     {
+        $post = PostModel::get($this->post_id);
+
         $data = [
-            'id' => $this->id,
-            'post_id' => $this->post_id,
-            'user_id' => $this->user_id,
-            'name' => $this->name,
-            'message' => $this->message,
-            'updated_at' => date(MYSQL_DATE_TIME)
+            'id'            => $this->id,
+            'post_id'       => $this->post_id,
+            'user_id'       => $this->user_id,
+            'name'          => $this->name,
+            'message'       => $this->message,
+            'updated_at'    => date(MYSQL_DATE_TIME)
         ];
 
         $db = DB::instance();
         $this->id = $db->store($data, self::$table);
+
+        $post->save();
         return $this->id;
     }
 }

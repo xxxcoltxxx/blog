@@ -10,6 +10,7 @@ class PostModel extends \System\Model
     public $title;
     public $content;
     public $user_id;
+    public $comment_count;
     public $created_at;
     public $updated_at;
 
@@ -61,11 +62,12 @@ class PostModel extends \System\Model
     public function save()
     {
         $data = [
-            'id' => $this->id,
-            'title' => $this->title,
-            'content' => $this->content,
-            'user_id' => $this->user_id,
-            'updated_at' => date(MYSQL_DATE_TIME)
+            'id'            => $this->id,
+            'title'         => $this->title,
+            'content'       => $this->content,
+            'user_id'       => $this->user_id,
+            'comment_count' => $this->getCommentCount(),
+            'updated_at'    => date(MYSQL_DATE_TIME)
         ];
 
         $db = DB::instance();
@@ -80,7 +82,18 @@ class PostModel extends \System\Model
     {
         if (is_null($this->comments)) {
             $this->comments = PostCommentModel::getComments($this);
+            $this->comment_count = count($this->comments);
         }
         return $this->comments;
+    }
+
+    /**
+     * Возвращает CommentCount
+     * @return int
+     */
+    public function getCommentCount()
+    {
+        $this->comment_count = PostCommentModel::getCommentCount($this);
+        return $this->comment_count;
     }
 }

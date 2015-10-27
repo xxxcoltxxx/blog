@@ -28,9 +28,9 @@
 <?php endif; ?>
 
 <hr />
-<?= $post->content ?>
+<?= nl2br($post->content) ?>
 <hr />
-
+<legend>Комментарии</legend>
 <?php if (empty($post->getComments())): ?>
     <div class="alert alert-info">Нет ни одного комментария</div>
 <?php else: ?>

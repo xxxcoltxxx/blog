@@ -55,7 +55,7 @@ class PostController extends \System\Controller
 
         $user = UserModel::isAuthorized();
         $data['post_id'] = $post_id;
-        $data['message'] = strip_tags($data['message']);
+        //$data['message'] = strip_tags($data['message']);
         if ($user) {
             $data['user_id'] = $user->id;
         } else {

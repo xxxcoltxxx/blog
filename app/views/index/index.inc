@@ -28,12 +28,14 @@
                     Создано: <?= date(DISPLAY_DATE_TIME, strtotime($post->created_at)) ?>
                 </small>
             </h4>
-            <p class="list-group-item-text"><?= $post->content ?></p>
+            <p class="list-group-item-text"><?= nl2br($post->content) ?></p>
             <p class="text-right">
                 <?php if (!empty($user)): ?>
                     <a href="/post/edit/<?= $post->id ?>" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-edit"></i> Редактировать</a>
                 <?php endif; ?>
-                <a href="/post/show/<?= $post->id ?>" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-comment"></i> Комментарии</a>
+                <a href="/post/show/<?= $post->id ?>" class="btn btn-default btn-xs">
+                    <i class="glyphicon glyphicon-comment"></i> <?= $post->getCommentCount() ?> Комментарии
+                </a>
             </p>
         </div>
     <?php endforeach; ?>
