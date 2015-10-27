@@ -1,0 +1,15 @@
+{
+  "name": "alexparamonov/blog",
+  "description": "Simple blog",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Alexander Paramonov",
+      "email": "alexander.v.paramonov@gmail.com"
+    }
+  ],
+  "require": {
+    "robmorgan/phinx": "v0.4.6"
+  }
+}
