@@ -28,7 +28,7 @@ use Data\Handlers\Text;
                 </small>
             </h4>
             <p class="list-group-item-text">
-                <?= nl2br(Text::cutStr($post->content, 1000)) ?>
+                <?= nl2br(Text::cutStr($post->content, 500)) ?>
                 <a href="/post/show/<?= $post->id ?>">Подробнее</a>
             </p>
             <p class="text-right">
