@@ -1,6 +1,8 @@
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !/public
-RewriteCond %{REQUEST_URI} !\.[^\.]+$
-RewriteRule ^(.*)$ /index.php?path=$1 [NC,L,QSA]
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !/public
+    RewriteCond %{REQUEST_URI} !\.[^\.]+$
+    RewriteRule ^(.*)$ /index.php?path=$1 [NC,L,QSA]
+</IfModule>

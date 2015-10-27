@@ -1,5 +1,7 @@
 <?php
 
+use Data\Handlers\Validate;
+
 class PostController extends \System\Controller
 {
     public function actionAdd()
@@ -12,6 +14,11 @@ class PostController extends \System\Controller
     {
         $this->view->title = "Редактирование поста";
         $post = PostModel::get($id);
+        $user = UserModel::isAuthorized();
+        if (!$user) {
+            $this->redirect("/user/auth");
+        }
+        Validate::check($post->user_id == $user->id, "У вас не прав для редактирования этого блога", 403);
         return $this->view->htmlPage("post/edit", ['post' => $post]);
     }
 
@@ -29,6 +36,7 @@ class PostController extends \System\Controller
 
         if ($id) {
             $post = PostModel::get($id);
+            Validate::check($post->user_id == $user->id, "У вас не прав для редактирования этого блога", 403);
         } else {
             $post = new PostModel();
         }
