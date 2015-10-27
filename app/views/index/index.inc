@@ -27,7 +27,10 @@ use Data\Handlers\Text;
                     Создано: <?= Text::formatDate(strtotime($post->created_at)) ?>
                 </small>
             </h4>
-            <p class="list-group-item-text"><?= nl2br(Text::cutStr($post->content, 1000)) ?></p>
+            <p class="list-group-item-text">
+                <?= nl2br(Text::cutStr($post->content, 1000)) ?>
+                <a href="/post/show/<?= $post->id ?>">Подробнее</a>
+            </p>
             <p class="text-right">
                 <?php if (!empty($user)): ?>
                     <a href="/post/edit/<?= $post->id ?>" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-edit"></i> Редактировать</a>
