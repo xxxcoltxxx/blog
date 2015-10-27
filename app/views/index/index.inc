@@ -9,6 +9,9 @@ use Data\Handlers\Text;
 ?>
 <h1><?= $this->title ?></h1>
 
+<?php if ($user): ?>
+    <a href="/post/add" class="btn btn-default pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Добавить пост</a>
+<?php endif; ?>
 <?= $this->template("auth", compact("user")) ?>
 
 <hr />
