@@ -18,6 +18,7 @@
 
 # Установка блога
 1. Создайте чистую базу данных
+
     ```
     CREATE DATABASE blog CHARACTER SET utf8 COLLATE utf8_general_ci
     ```
@@ -94,6 +95,7 @@
     $ sudo echo "127.0.0.1" >> /etc/hosts
     ```
 9. Добавьте пользователя для блога
+
     ```
     INSERT INTO `users` (`email`, `password`, `name`)
     VALUES
