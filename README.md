@@ -18,7 +18,7 @@
 
 # Установка блога
 1. Создайте чистую базу данных
-    ```sql
+    ```
     CREATE DATABASE blog CHARACTER SET utf8 COLLATE utf8_general_ci
     ```
 2. Создайте хост
