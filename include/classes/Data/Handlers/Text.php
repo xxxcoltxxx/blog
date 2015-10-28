@@ -48,13 +48,13 @@ class Text
     {
         $text = $string;
         if(mb_strlen($string, "utf8") > $max_len) {
-            $text = mb_substr($string, 0, $max_len, "utf8");
+            $text = preg_replace('#^(.{0,' . $max_len . '}[a-zА-я0-9]*).*$#uis', "$1", $text, 1);
             if ($dots && mb_strlen($string, "utf8") > $max_len) {
                 $text .= "...";
             }
         }
 
-        return $text;
+        return trim($text);
     }
 
     /**
