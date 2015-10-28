@@ -94,7 +94,7 @@
     $ sudo echo "127.0.0.1" >> /etc/hosts
     ```
 9. Добавьте пользователя для блога
-    ```sql
+    ```
     INSERT INTO `users` (`email`, `password`, `name`)
     VALUES
     ('user@mail.ru', MD5('12345678'), 'Пользователь')
