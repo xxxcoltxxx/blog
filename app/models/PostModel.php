@@ -14,7 +14,7 @@ class PostModel extends \System\Model
     public $created_at;
     public $updated_at;
 
-    private static $table = "posts";
+    protected static $table = "posts";
 
     /** @var null|PostCommentModel[] */
     private $comments = null;
@@ -106,5 +106,14 @@ class PostModel extends \System\Model
             $this->comment_count = PostCommentModel::getCommentCount($this);
         }
         return $this->comment_count;
+    }
+
+    public function delete()
+    {
+        foreach ($this->getComments() as $comment) {
+            $comment->delete();
+        }
+        parent::delete();
+
     }
 }

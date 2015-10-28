@@ -27,18 +27,22 @@ use Data\Handlers\Text;
                     Создано: <?= Text::formatDate(strtotime($post->created_at)) ?>
                 </small>
             </h4>
+
             <p class="list-group-item-text">
                 <?= nl2br(Text::cutStr($post->content, 500)) ?>
                 <a href="/post/show/<?= $post->id ?>">Подробнее</a>
             </p>
-            <p class="text-right">
+            <br />
+
+            <a href="/post/show/<?= $post->id ?>" class="btn btn-default btn-xs">
+                <i class="glyphicon glyphicon-comment"></i> <?= $post->getCommentCount() ?> Комментари<?= Text::getNumEnding($post->getCommentCount(), ["й", "я", "ев"]) ?>
+            </a>
+            <div class="pull-right">
                 <?php if (!empty($user) && $user->id == $post->user_id): ?>
                     <a href="/post/edit/<?= $post->id ?>" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-edit"></i> Редактировать</a>
+                    <a href="/post/delete/<?= $post->id ?>" class="btn btn-danger btn-xs confirm"><i class="glyphicon glyphicon-trash"></i> Удалить</a>
                 <?php endif; ?>
-                <a href="/post/show/<?= $post->id ?>" class="btn btn-default btn-xs">
-                    <i class="glyphicon glyphicon-comment"></i> <?= $post->getCommentCount() ?> Комментари<?= Text::getNumEnding($post->getCommentCount(), ["й", "я", "ев"]) ?>
-                </a>
-            </p>
+            </div>
         </div>
     <?php endforeach; ?>
 <?php endif; ?>

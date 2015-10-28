@@ -12,7 +12,7 @@ class PostCommentModel extends \System\Model
     public $created_at;
     public $updated_at;
 
-    private static $table = "post_comments";
+    protected static $table = "post_comments";
 
     /**
      * @param PostModel $post

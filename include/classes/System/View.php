@@ -16,7 +16,7 @@ class View
     {
         $this->addLib("jquery");
         $this->addLib("bootstrap");
-        $this->addJS("/public/js/functions");
+        $this->addJS("/public/js/functions.js");
     }
 
     private function buildHead()

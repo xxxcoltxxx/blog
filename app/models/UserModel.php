@@ -12,7 +12,7 @@ class UserModel extends \System\Model
     public $created_at;
     public $updated_at;
 
-    private static $table = "users";
+    protected static $table = "users";
 
     public function getDisplayName()
     {

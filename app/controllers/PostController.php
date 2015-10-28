@@ -45,6 +45,20 @@ class PostController extends \System\Controller
         $this->redirect("/");
     }
 
+    public function actionDelete($id)
+    {
+        $user = UserModel::isAuthorized();
+        if (!$user) {
+            $this->redirect("/user/auth");
+        }
+
+        $post = PostModel::get($id);
+        Validate::check($post->user_id == $user->id, "У вас не прав для редактирования этого блога", 403);
+
+        $post->delete();
+        $this->redirect("/");
+    }
+
     public function actionShow($id)
     {
         $user = UserModel::isAuthorized();

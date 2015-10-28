@@ -21,4 +21,10 @@ class Model
             }
         }
     }
+
+    public function delete()
+    {
+        $db = DB::instance();
+        $db->delete(static::$table, "id = '{$this->id}'");
+    }
 }

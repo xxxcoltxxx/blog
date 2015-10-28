@@ -12,5 +12,13 @@ $(document).ready(function() {
             "height=" + height + ",width=" + width + ",resizable=true,left=" + left + ",top=" + top
         );
     });
+
+    $(document).on("click", ".confirm", function(e) {
+        var message = $(this).data("message");
+        message = message ? message : "Вы уверены?";
+        if (!confirm(message)) {
+            e.preventDefault();
+        }
+    });
 });
 
